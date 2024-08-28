@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.gradient {
+  @apply bg-gradient-to-bl from-zinc-900 to-zinc-950 ;
+}
+.gradient-2{
+  @apply bg-gradient-to-bl from-black to-zinc-950 ;
+}

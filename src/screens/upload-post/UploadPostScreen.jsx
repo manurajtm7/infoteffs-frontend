@@ -10,9 +10,9 @@ function UploadPostScreen() {
 
   let navigate = useNavigate();
 
-
   const productionUrl = `${import.meta.env.VITE_REACT_APP_LOCAL_HOST}`;
-  let onPostSubmit = async () => {
+  let onPostSubmit = async (e) => {
+    e.preventDefault();
     if (!!(postName && content)) {
       const authKey = localStorage.getItem("authKey");
       const userId = localStorage.getItem("userId");

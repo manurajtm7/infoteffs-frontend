@@ -14,7 +14,7 @@ function PostCard({
   isProfileView,
 }) {
   const [liked, setLiked] = useState(false);
-  const productionUrl = "http://localhost:4000";
+  const productionUrl = import.meta.env.VITE_REACT_APP_LOCAL_HOST;
 
   const handleDeletePost = async () => {
     const authKey = localStorage.getItem("authKey");

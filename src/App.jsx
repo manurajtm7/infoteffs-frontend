@@ -1,10 +1,14 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
-import { Home } from "./screens";
+import {
+  Home,
+  Login,
+  ProfileScreen,
+  Register,
+  UploadPostScreen,
+} from "./screens";
 import { NavBar } from "./components";
-import UploadPostScreen from "./screens/upload-post/UploadPostScreen";
-import ProfileScreen from "./screens/profile/ProfileScreen";
 
 function App() {
   return (
@@ -14,8 +18,8 @@ function App() {
       </div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/auth/register" element={<Home />} />
-        <Route path="/auth/login" element={<Home />} />
+        <Route path="/auth/register" element={<Register />} />
+        <Route path="/auth/login" element={<Login />} />
         <Route path="/user/profile" element={<ProfileScreen />} />
         <Route path="/post/upload" element={<UploadPostScreen />} />
       </Routes>

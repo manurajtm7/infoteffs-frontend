@@ -8,7 +8,6 @@ function UploadPost() {
     <div className="w-full text-tcolor  p-2 py-5 grid place-items-center">
       <div className="w-[90%] md:w-1/3 flex  items-center  gap-5">
         <ImagePlusIcon size={30} onClick={() => navigate("/post/upload")} />
-        <UserCircleIcon size={30} onClick={() => navigate("/user/profile")} />
         <span className="text-sm opacity-70">add post</span>
       </div>
     </div>

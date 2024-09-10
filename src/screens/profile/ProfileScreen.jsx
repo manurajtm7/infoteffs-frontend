@@ -38,11 +38,11 @@ function ProfileScreen() {
   }, []);
 
   return (
-    <div className="w-full h-[82%] xs:h-[90%]  flex md:gap-5 flex-col  items-center  ">
-      <div className="w-[90%] md:w-1/2 h-max ">
+    <div className="w-full h-[82%] xs:h-[90%] gradient-2  flex md:gap-5 flex-col  items-center  ">
+      <div className="w-[90%] md:w-1/3 h-max ">
         {!loading && <UserProfileImageCard {...userDetails?.userDetail} />}
       </div>
-      <div className="w-[90%] md:w-1/2 h-[90%] md:h-[95%]  overflow-auto">
+      <div className="w-[90%] md:w-1/3 h-[90%] md:h-[95%]  overflow-auto">
         {loading ? (
           <div className="w-full h-full   flex items-center justify-center">
             <LoadingAnimationTwo />
@@ -50,6 +50,7 @@ function ProfileScreen() {
         ) : userDetails?.posts?.length > 0 ? (
           userDetails?.posts?.map((data, index) => (
             <PostCard
+              key={index}
               {...data}
               user={userDetails?.userDetail}
               isProfileView={true}
@@ -57,7 +58,7 @@ function ProfileScreen() {
           ))
         ) : (
           <div className="w-full h-1/2 text-tcolor flex gap-1 flex-col items-center justify-center">
-            <h1 >no posts</h1>
+            <h1>no posts</h1>
             <Link to={"/"}>
               <Image />
             </Link>

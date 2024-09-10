@@ -40,8 +40,8 @@ function UploadPostScreen() {
   };
 
   return (
-    <div className="w-full h-screen text-tcolor gradient-2 grid  justify-items-center">
-      <div className="w-[90%] flex flex-col gap-4">
+    <div className="w-full min-h-screen text-tcolor gradient-2 grid  justify-items-center overflow-auto">
+      <div className="w-[90%] md:w-1/3 flex flex-col gap-4">
         <div className="text-start ">
           <h3 className="text-lg font-medium">upload</h3>
         </div>
@@ -87,7 +87,7 @@ function UploadPostScreen() {
           ></textarea>
 
           <button
-            className="w-full h-12 font-medium bg-primary rounded-lg"
+            className="w-full min-h-10 font-medium bg-primary rounded-lg"
             onClick={onPostSubmit}
           >
             Save your post

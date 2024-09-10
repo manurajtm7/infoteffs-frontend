@@ -29,6 +29,7 @@ function Home() {
 
     hanldeFetchData();
   }, [change]);
+
   return (
     <div className="w-full h-full gradient-2 grid  place-items-center ">
       <UploadPost />
@@ -40,7 +41,7 @@ function Home() {
             ))}
           </div>
         ) : (
-          posts.map((data, index) => <PostCard {...data} />)
+          posts.map((data, index) => <PostCard key={index} {...data} />)
         )}
       </div>
     </div>

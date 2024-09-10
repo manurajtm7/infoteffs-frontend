@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ProfileImage } from "../../constants";
 import { Heart, MessageCircle, Share2, Trash2 } from "lucide-react";
 
@@ -12,6 +12,7 @@ function PostCard({
   user,
   date,
   isProfileView,
+  likes,
 }) {
   const [liked, setLiked] = useState(false);
   const productionUrl = import.meta.env.VITE_REACT_APP_LOCAL_HOST;
@@ -35,8 +36,34 @@ function PostCard({
       window.alert("error occured , try agin later");
     }
   };
+
+  const handleLikeState = async (e) => {
+    setLiked((prev) => !prev);
+    try {
+      await fetch(`${productionUrl}/like`, {
+        method: "POST",
+        body: JSON.stringify({
+          postId: _id,
+          likeState: liked,
+          userId: localStorage.getItem("userId"),
+        }),
+        headers: { "Content-Type": "application/json" },
+      });
+    } catch (err) {
+      alert(err);
+    }
+  };
+
+  useEffect(() => {
+    likes?.includes(localStorage.getItem("userId"))
+      ? setLiked(true)
+      : setLiked(false);
+  }, []);
   return (
-    <div className="w-full h-max text-tcolor mt-3">
+    <div
+      className="w-full h-max text-tcolor mt-3"
+      onDoubleClick={handleLikeState}
+    >
       <div className="w-full text-sm border-b border-zinc-700 py-3 flex gap-3 items-center relative ">
         <img
           src={user?.image || ProfileImage}
@@ -64,7 +91,7 @@ function PostCard({
 
       <div className=" py-3 px-2 flex gap-4">
         <Heart
-          onClick={() => setLiked((pre) => !pre)}
+          onClick={handleLikeState}
           fill={liked && "red"}
           color={liked ? "red" : "white"}
         />

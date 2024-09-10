@@ -42,7 +42,7 @@ function ProfileScreen() {
       <div className="w-[90%] md:w-1/3 h-max ">
         {!loading && <UserProfileImageCard {...userDetails?.userDetail} />}
       </div>
-      <div className="w-[90%] md:w-1/3 h-[90%] md:h-[95%]  overflow-auto">
+      <div className="w-[90%] md:w-1/3 h-[75%] md:h-[70%] pb-5  overflow-auto">
         {loading ? (
           <div className="w-full h-full   flex items-center justify-center">
             <LoadingAnimationTwo />

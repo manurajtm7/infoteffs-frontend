@@ -42,7 +42,7 @@ function UploadPostScreen() {
   return (
     <div className="w-full min-h-screen text-tcolor gradient-2 grid  justify-items-center overflow-auto">
       <div className="w-[90%] md:w-1/3 flex flex-col gap-4">
-        <div className="text-start ">
+        <div className="text-start mt-8 ">
           <h3 className="text-lg font-medium">upload</h3>
         </div>
         <form className="w-full h-4/5  flex gap-5 flex-col">

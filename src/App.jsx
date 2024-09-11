@@ -1,5 +1,6 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
 
 import {
   Home,
@@ -11,6 +12,7 @@ import {
 import { NavBar } from "./components";
 import TopBar from "./components/top-bar/TopBar";
 import SettingScreen from "./screens/settings/SettingScreen";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -27,6 +29,7 @@ function App() {
         <Route path="/user/settings" element={<SettingScreen />} />
         <Route path="/post/upload" element={<UploadPostScreen />} />
       </Routes>
+      <ToastContainer />
     </main>
   );
 }

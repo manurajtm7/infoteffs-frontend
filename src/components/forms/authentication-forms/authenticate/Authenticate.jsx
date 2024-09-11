@@ -2,6 +2,8 @@ import { Image } from "lucide-react";
 import React, { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
+import LoadingAnimationThree from "../../../loaders/loading-animation-three/LoadingAnimationThree";
+import { toast } from "react-toastify";
 
 function Authenticate({ isLogin }) {
   const [name, setName] = useState("");
@@ -9,12 +11,14 @@ function Authenticate({ isLogin }) {
   const [password, setPassword] = useState("");
   const [file, setfile] = useState(null);
   const [change, setChange] = useState(false);
+
+  const [loading, setLoading] = useState(false);
   let navigate = useNavigate();
 
   async function submitHandle(e) {
     if ((name, email, password)) {
       e.preventDefault();
-
+      setLoading(true);
       const formData = new FormData();
 
       formData.set("name", name);
@@ -32,17 +36,23 @@ function Authenticate({ isLogin }) {
       );
 
       if (responce2.ok) {
-        window.alert("registration success");
+        setLoading(false);
         setName("");
         setEmail("");
         setPassword("");
         setChange("");
+
         navigate("/");
         const response = await responce2.json();
         localStorage.setItem("authKey", response.authKey);
         localStorage.setItem("userId", response.userId);
-      } else if (responce2.status === 400) {
-        setChange("please enter the all details");
+      } else {
+        toast.error(
+          isLogin
+            ? "Please check your email or password"
+            : "Email already exist or please check you internet connection"
+        );
+        setLoading(false);
       }
     } else alert("please enter the valid details");
   }
@@ -105,9 +115,9 @@ function Authenticate({ isLogin }) {
 
       <button
         type="submit"
-        className="w-[90%] min-h-10  text-tcolor bg-primary rounded-md"
+        className="w-[90%] min-h-10  text-tcolor bg-primary rounded-md grid place-items-center"
       >
-        {isLogin ? "Login" : "Register"}
+        {loading ? <LoadingAnimationThree /> : isLogin ? "Login" : "Register"}
       </button>
       <span className="error-text">{change}</span>
     </form>

@@ -13,6 +13,7 @@ function PostCard({
   date,
   isProfileView,
   likes,
+  setChanges,
 }) {
   const [liked, setLiked] = useState(false);
   const productionUrl = import.meta.env.VITE_REACT_APP_LOCAL_HOST;
@@ -32,6 +33,7 @@ function PostCard({
     });
     if (response.ok) {
       window.alert(`The post is deleted successfully`);
+      setChanges((prev) => !prev);
     } else {
       window.alert("error occured , try agin later");
     }

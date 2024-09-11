@@ -1,5 +1,6 @@
 import LoadingAnimation from "./loaders/loading-animation/LoadingAnimation";
 import LoadingAnimationTwo from "./loaders/loading-animation-two/LoadingAnimationTwo";
+import LoadingAnimationThree from "./loaders/loading-animation-three/LoadingAnimationThree";
 import NavBar from "./nav-bar/NavBar";
 import PostCard from "./post-card/PostCard";
 import UploadPost from "./upload-post/UploadPost";
@@ -13,5 +14,6 @@ export {
   UploadPost,
   UserProfileImageCard,
   LoadingAnimationTwo,
+  LoadingAnimationThree,
   Authenticate,
 };

@@ -10,6 +10,7 @@ import { Image } from "lucide-react";
 function ProfileScreen() {
   const [userDetails, setUserDetails] = useState({});
   const [loading, setLoading] = useState(false);
+  const [changes, setChanges] = useState(false);
 
   const productionUrl = `${import.meta.env.VITE_REACT_APP_LOCAL_HOST}`;
 
@@ -35,7 +36,7 @@ function ProfileScreen() {
       }
     };
     handleFetchProfieDetails();
-  }, []);
+  }, [changes]);
 
   return (
     <div className="w-full h-[82%] xs:h-[90%] gradient-2  flex md:gap-5 flex-col  items-center  ">
@@ -54,6 +55,7 @@ function ProfileScreen() {
               {...data}
               user={userDetails?.userDetail}
               isProfileView={true}
+              setChanges={setChanges}
             />
           ))
         ) : (

@@ -1,11 +1,13 @@
 import { Image, ImagePlusIcon } from "lucide-react";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { LoadingAnimationThree } from "../../components";
 
 function UploadPostScreen() {
   let [postName, setPostName] = useState("");
   let [content, setContent] = useState("");
   let [image, setImage] = useState({});
+  const [loading, setLoading] = useState(false);
   const [preview, setPreview] = useState(null);
 
   let navigate = useNavigate();
@@ -13,7 +15,8 @@ function UploadPostScreen() {
   const productionUrl = `${import.meta.env.VITE_REACT_APP_LOCAL_HOST}`;
   let onPostSubmit = async (e) => {
     e.preventDefault();
-    if (!!(postName && content)) {
+    if (postName || content || image) {
+      setLoading(true);
       const authKey = localStorage.getItem("authKey");
       const userId = localStorage.getItem("userId");
 
@@ -29,9 +32,11 @@ function UploadPostScreen() {
         body: formData,
       });
       if (response.ok) {
-        window.alert(`The blog is created successfully`);
+        setLoading(false);
+
         setPostName("");
         setContent("");
+
         navigate("/");
       } else {
         window.alert("error occured , try agin later");
@@ -87,10 +92,10 @@ function UploadPostScreen() {
           ></textarea>
 
           <button
-            className="w-full min-h-10 font-medium bg-primary rounded-lg"
+            className="w-full min-h-10 font-medium bg-primary rounded-lg grid place-items-center"
             onClick={onPostSubmit}
           >
-            Save your post
+            {loading ? <LoadingAnimationThree /> : "Save your post"}
           </button>
         </form>
       </div>

@@ -92,11 +92,14 @@ function PostCard({
       )}
 
       <div className=" py-3 px-2 flex gap-4">
-        <Heart
-          onClick={handleLikeState}
-          fill={liked && "red"}
-          color={liked ? "red" : "white"}
-        />
+        <div className="flex gap-1">
+          <Heart
+            onClick={handleLikeState}
+            fill={liked && "red"}
+            color={liked ? "red" : "white"}
+          />
+          <p className="text-white">{likes?.length}</p>
+        </div>
         <MessageCircle />
         <Share2 />
       </div>

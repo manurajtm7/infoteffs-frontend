@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
+  EditProfile,
   LoadingAnimationTwo,
   PostCard,
   UserProfileImageCard,
@@ -11,6 +12,7 @@ function ProfileScreen() {
   const [userDetails, setUserDetails] = useState({});
   const [loading, setLoading] = useState(false);
   const [changes, setChanges] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
 
   const productionUrl = `${import.meta.env.VITE_REACT_APP_LOCAL_HOST}`;
 
@@ -40,8 +42,20 @@ function ProfileScreen() {
 
   return (
     <div className="w-full h-[82%] xs:h-[90%] gradient-2  flex md:gap-5 flex-col  items-center  ">
+      <EditProfile
+        {...userDetails.userDetail}
+        active={isEdit}
+        setActive={setIsEdit}
+        setChanges={setChanges}
+      />
       <div className="w-[90%] md:w-1/3 h-max ">
-        {!loading && <UserProfileImageCard {...userDetails?.userDetail} />}
+        {!loading && (
+          <UserProfileImageCard
+            {...userDetails?.userDetail}
+            setIsEdit={setIsEdit}
+            isEdit={isEdit}
+          />
+        )}
       </div>
       <div className="w-[90%] md:w-1/3 h-[75%] md:h-[70%] pb-5  overflow-auto">
         {loading ? (

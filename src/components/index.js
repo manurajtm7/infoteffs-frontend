@@ -6,6 +6,7 @@ import PostCard from "./post-card/PostCard";
 import UploadPost from "./upload-post/UploadPost";
 import UserProfileImageCard from "./user-profile-components/user-profile-image-card/UserProfileImageCard";
 import Authenticate from "./forms/authentication-forms/authenticate/Authenticate";
+import EditProfile from "./edit-profile/EditProfile";
 
 export {
   NavBar,
@@ -16,4 +17,5 @@ export {
   LoadingAnimationTwo,
   LoadingAnimationThree,
   Authenticate,
+  EditProfile,
 };

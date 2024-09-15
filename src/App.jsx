@@ -3,16 +3,17 @@ import { Routes, Route } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 
 import {
+  Feeds,
   Home,
   Login,
   ProfileScreen,
   Register,
+  SettingScreen,
   UploadPostScreen,
 } from "./screens";
 import { NavBar } from "./components";
-import TopBar from "./components/top-bar/TopBar";
-import SettingScreen from "./screens/settings/SettingScreen";
 import { ToastContainer } from "react-toastify";
+import TopBar from "./components/top-bar/TopBar";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/user/profile" element={<ProfileScreen />} />
         <Route path="/user/settings" element={<SettingScreen />} />
         <Route path="/post/upload" element={<UploadPostScreen />} />
+        <Route path="/feeds" element={<Feeds />} />
       </Routes>
       <ToastContainer />
     </main>

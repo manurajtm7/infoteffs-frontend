@@ -7,6 +7,7 @@ import UploadPost from "./upload-post/UploadPost";
 import UserProfileImageCard from "./user-profile-components/user-profile-image-card/UserProfileImageCard";
 import Authenticate from "./forms/authentication-forms/authenticate/Authenticate";
 import EditProfile from "./edit-profile/EditProfile";
+import ProfileImageUpdate from "./profile-update/ProfileImageUpdate";
 
 export {
   NavBar,
@@ -18,4 +19,5 @@ export {
   LoadingAnimationThree,
   Authenticate,
   EditProfile,
+  ProfileImageUpdate,
 };

@@ -35,13 +35,14 @@ function EditProfile({ active, name, tags, setChanges, setActive }) {
   };
   return (
     <div
-      className="w-full md:w-1/3 min-h-max text-tcolor gradient-2  flex gap-3 flex-col items-center justify-center transition-all overflow-auto"
+      className="w-full md:w-1/3  text-tcolor gradient-2  flex gap-3 flex-col items-center justify-center transition-all overflow-auto"
       style={{ height: active ? "300px" : "0px" }}
     >
       <form
         onSubmit={handleUpdateUserDetail}
         className="w-[90%]  flex flex-col gap-2 overflow-auto"
       >
+
         <input
           type="text"
           defaultValue={name}

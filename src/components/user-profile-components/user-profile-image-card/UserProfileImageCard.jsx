@@ -1,16 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { ProfileImage } from "../../../constants";
-import { Edit, X } from "lucide-react";
+import { Edit, PenBoxIcon, X } from "lucide-react";
+import { ProfileImageUpdate } from "../../index";
 
 function UserProfileImageCard({ image, name, tags, isEdit, setIsEdit }) {
+
+  const [isProfileUpdateActive, setIsProfileUpdateAtive] = useState(false)
   return (
-    <div className="w-full xs:h-40  text-tcolor p-4  flex gap-5 items-center justify-start overflow-hidden">
-      <div className="min-w-max border-2 border-pink-600  rounded-full overflow-hidden ">
+    <div className="w-full xs:h-40  text-tcolor p-4  flex gap-5 items-center justify-start overflow-hidden ">
+      {
+        isProfileUpdateActive && (
+          <ProfileImageUpdate image={image} isActive={isProfileUpdateActive} setIsAtive={setIsProfileUpdateAtive} />
+        )
+      }
+      <div
+        onClick={() => setIsProfileUpdateAtive(prev => !prev)}
+        className="min-w-max border-2 border-emerald-600  rounded-full overflow-hidden relative ">
         <img
           src={image || ProfileImage}
           alt="user profile"
-          className="w-20 h-20  p-3 object-cover"
+          className="w-20 h-20   object-cover"
         />
+        <div className="w-full  h-full bg-black  bg-opacity-80 grid justify-items-center absolute left-0 top-[70%]">
+          <PenBoxIcon size={15} />
+        </div>
       </div>
       <div className="flex gap-4 items-start">
         <div>

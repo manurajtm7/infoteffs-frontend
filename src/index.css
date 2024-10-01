@@ -3,8 +3,12 @@
 @tailwind utilities;
 
 .gradient {
-  @apply bg-gradient-to-bl from-zinc-900 to-zinc-950 ;
+  @apply bg-gradient-to-bl from-zinc-900 to-zinc-950;
 }
-.gradient-2{
-  @apply bg-gradient-to-bl from-black to-zinc-950 ;
+.gradient-2 {
+  @apply bg-gradient-to-bl from-black to-zinc-950;
+}
+
+.meta-gradient {
+  @apply bg-gradient-to-tl from-slate-950 to-zinc-900;
 }

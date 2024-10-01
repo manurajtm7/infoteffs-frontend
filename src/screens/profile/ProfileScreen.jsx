@@ -41,7 +41,7 @@ function ProfileScreen() {
   }, [changes]);
 
   return (
-    <div className="w-full h-[82%] xs:h-[90%] gradient-2  flex md:gap-5 flex-col  items-center  ">
+    <div className="w-full h-[82%] xs:h-[90%] gradient-2  flex md:gap-5 flex-col  items-center relative  ">
       <EditProfile
         {...userDetails.userDetail}
         active={isEdit}

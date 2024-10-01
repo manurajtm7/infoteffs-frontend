@@ -4,7 +4,7 @@ import { LoadingAnimationThree, LoadingAnimationTwo } from '../index'
 import { toast } from 'react-toastify'
 
 
-const productionUrl = "http://localhost:4000"
+const productionUrl = import.meta.env.VITE_REACT_APP_LOCAL_HOST
 
 function ProfileImageUpdate({ image, isActive, setIsAtive }) {
     const [preview, setPreview] = useState(null)

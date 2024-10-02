@@ -70,7 +70,7 @@ function PostCard({
         <img
           src={user?.image || ProfileImage}
           alt="user image"
-          className="w-8 h-8 p-2 border border-blue-800 rounded-full object-cover"
+          className="w-9 h-9  border border-zinc-800 rounded-full object-cover"
         />
         <p>{user?.name}</p>
         <p className="text-xs opacity-45 truncate">

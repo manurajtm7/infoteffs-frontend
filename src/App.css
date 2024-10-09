@@ -58,5 +58,5 @@
 }
 
 .active{
-  color: white;
+  @apply text-sky-700  scale-125 -translate-y-1 
 }

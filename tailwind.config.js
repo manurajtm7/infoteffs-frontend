@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+      },
       screens: {
         xs: "380px",
         sm: "640px",
@@ -11,11 +14,11 @@ export default {
         xl: "1280px",
         "2xl": "1536px",
       },
-      colors : {
-        primary : "#008DEA",
-        ground  : "#0A0906",
-        tcolor : "#FFFFFF",
-      }
+      colors: {
+        primary: "#008DEA",
+        ground: "#0A0906",
+        tcolor: "#FFFFFF",
+      },
     },
   },
   plugins: [],

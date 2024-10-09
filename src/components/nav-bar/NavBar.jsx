@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Home, PlusCircleIcon, UserCircle } from "lucide-react";
+import { CircleFadingPlus, Home, PlusCircleIcon, UserCircle } from "lucide-react";
 
 function NavBar() {
   return (
@@ -10,6 +10,10 @@ function NavBar() {
           <Home size={23} />
         </NavLink>
 
+        <NavLink to={"/user/feeds"}>
+        <CircleFadingPlus size={23} />
+        </NavLink>
+
         <NavLink to={"/post/upload"}>
           <PlusCircleIcon size={23} />
         </NavLink>
@@ -17,6 +21,7 @@ function NavBar() {
         <NavLink to={"/user/profile"}>
           <UserCircle size={23} />
         </NavLink>
+
       </ul>
     </nav>
   );

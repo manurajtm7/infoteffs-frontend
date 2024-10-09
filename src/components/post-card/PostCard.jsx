@@ -66,7 +66,7 @@ function PostCard({
       className="w-full h-max text-tcolor mt-3"
       onDoubleClick={handleLikeState}
     >
-      <div className="w-full text-sm border-b border-zinc-700 py-3 flex gap-3 items-center relative ">
+      <div className="w-full text-sm border-b border-zinc-700 py-3 px-5 flex gap-3 items-center relative ">
         <img
           src={user?.image || ProfileImage}
           alt="user image"
@@ -91,7 +91,7 @@ function PostCard({
         </div>
       )}
 
-      <div className=" py-3 px-2 flex gap-4">
+      <div className=" py-3 px-5 flex gap-4">
         <div className="flex gap-1">
           <Heart
             onClick={handleLikeState}
@@ -103,7 +103,7 @@ function PostCard({
         <MessageCircle />
         <Share2 />
       </div>
-      <div className="py-1 px-2">
+      <div className="py-1 px-5">
         <h3 className="text-xs font-medium">{postName}</h3>
         <p className="text-xs opacity-60 ">{content?.toString()}</p>
       </div>

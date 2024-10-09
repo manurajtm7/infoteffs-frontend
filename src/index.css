@@ -12,3 +12,7 @@
 .meta-gradient {
   @apply bg-gradient-to-tl from-slate-950 to-zinc-900;
 }
+
+.feeds-gradient {
+  @apply bg-gradient-to-r  from-pink-700 to-violet-500;
+}

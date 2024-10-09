@@ -33,7 +33,7 @@ function Home() {
   return (
     <div className="w-full h-full gradient-2 grid  place-items-center ">
       <UploadPost />
-      <div className="w-[90%] md:w-1/3 h-full pb-24 flex flex-col items-center  overflow-auto">
+      <div className="w-full md:w-1/3 h-full pb-24 flex flex-col items-center  overflow-auto">
         {loading ? (
           <div className="w-full h-screen grid gap-8 place-items-center ">
             {Array.from({ length: 20 }).map((_, __) => (

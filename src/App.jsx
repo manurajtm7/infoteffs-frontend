@@ -17,7 +17,7 @@ import TopBar from "./components/top-bar/TopBar";
 
 function App() {
   return (
-    <main className="w-full h-screen gradient">
+    <main className="w-full h-screen gradient font-poppins">
       <div className="w-full h-max">
         <NavBar />
         <TopBar />
@@ -29,7 +29,7 @@ function App() {
         <Route path="/user/profile" element={<ProfileScreen />} />
         <Route path="/user/settings" element={<SettingScreen />} />
         <Route path="/post/upload" element={<UploadPostScreen />} />
-        <Route path="/feeds" element={<Feeds />} />
+        <Route path="/user/feeds" element={<Feeds />} />
       </Routes>
       <ToastContainer />
     </main>

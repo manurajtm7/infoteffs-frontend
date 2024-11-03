@@ -14,6 +14,7 @@ function PostCard({
   isProfileView,
   likes,
   setChanges,
+  doesEdit
 }) {
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(likes?.length);
@@ -82,7 +83,7 @@ function PostCard({
           {new Date(date).toDateString()}
         </p>
 
-        {isProfileView && (
+        {(isProfileView && doesEdit) && (
           <Trash2
             className=" text-red-900 absolute  right-5"
             onClick={handleDeletePost}

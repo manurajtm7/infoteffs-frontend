@@ -65,6 +65,7 @@ function PeopleProfile() {
                             user={userDetails?.userDetail}
                             isProfileView={true}
                             setChanges={setChanges}
+                            doesEdit={false}
                         />
                     ))
                 ) : (

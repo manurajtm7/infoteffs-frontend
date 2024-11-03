@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ProfileImage } from '../../constants';
-import { Send, SendHorizonal, SendToBack } from 'lucide-react';
+
 
 function PeoplesCard({ data }) {
     const navigate = useNavigate();

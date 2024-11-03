@@ -5,6 +5,8 @@ import Register from "./authentication-screen/register/Register";
 import Login from "./authentication-screen/login/Login";
 import Feeds from "./feeds/Feeds";
 import SettingScreen from "./settings/SettingScreen";
+import PeoplesScreen from "./peoples/PeoplesScreen";
+import PeopleProfile from "./peoples/PeopleProfile";
 
 export {
   Home,
@@ -14,4 +16,6 @@ export {
   Login,
   SettingScreen,
   Feeds,
+  PeoplesScreen,
+  PeopleProfile
 };

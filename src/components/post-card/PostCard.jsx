@@ -16,6 +16,7 @@ function PostCard({
   setChanges,
 }) {
   const [liked, setLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(likes?.length);
   const productionUrl = import.meta.env.VITE_REACT_APP_LOCAL_HOST;
 
   const handleDeletePost = async () => {
@@ -51,9 +52,12 @@ function PostCard({
         }),
         headers: { "Content-Type": "application/json" },
       });
+
+
     } catch (err) {
       alert(err);
     }
+    setLikeCount(prev => liked ? prev - 1 : prev + 1)
   };
 
   useEffect(() => {
@@ -61,6 +65,7 @@ function PostCard({
       ? setLiked(true)
       : setLiked(false);
   }, []);
+
   return (
     <div
       className="w-full h-max text-tcolor mt-3"
@@ -98,7 +103,7 @@ function PostCard({
             fill={liked && "red"}
             color={liked ? "red" : "white"}
           />
-          <p className="text-white">{likes?.length}</p>
+          <p className="text-white">{likeCount}</p>
         </div>
         <MessageCircle />
         <Share2 />

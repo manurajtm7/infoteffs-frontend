@@ -8,6 +8,8 @@ import UserProfileImageCard from "./user-profile-components/user-profile-image-c
 import Authenticate from "./forms/authentication-forms/authenticate/Authenticate";
 import EditProfile from "./edit-profile/EditProfile";
 import ProfileImageUpdate from "./profile-update/ProfileImageUpdate";
+import SkeletonLoad from "./loaders/loading-animation-skeleton/SkeletonLoad";
+import PeoplesCard from "./peoples-card/PeoplesCard";
 
 export {
   NavBar,
@@ -20,4 +22,6 @@ export {
   Authenticate,
   EditProfile,
   ProfileImageUpdate,
+  SkeletonLoad,
+  PeoplesCard,
 };

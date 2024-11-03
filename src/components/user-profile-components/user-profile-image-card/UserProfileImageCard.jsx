@@ -3,13 +3,13 @@ import { ProfileImage } from "../../../constants";
 import { Edit, PenBoxIcon, X } from "lucide-react";
 import { ProfileImageUpdate } from "../../index";
 
-function UserProfileImageCard({ image, name, tags, isEdit, setIsEdit }) {
+function UserProfileImageCard({ image, name, tags, isEdit, setIsEdit, DoesEdit }) {
 
   const [isProfileUpdateActive, setIsProfileUpdateAtive] = useState(false)
   return (
     <div className="w-full xs:h-40  text-tcolor p-4  flex gap-5 items-center justify-start overflow-hidden ">
       {
-        isProfileUpdateActive && (
+        (isProfileUpdateActive && DoesEdit) && (
           <ProfileImageUpdate image={image} isActive={isProfileUpdateActive} setIsAtive={setIsProfileUpdateAtive} />
         )
       }
@@ -21,9 +21,13 @@ function UserProfileImageCard({ image, name, tags, isEdit, setIsEdit }) {
           alt="user profile"
           className="w-20 h-20   object-cover"
         />
-        <div className="w-full  h-full bg-black  bg-opacity-80 grid justify-items-center absolute left-0 top-[70%]">
-          <PenBoxIcon size={15} />
-        </div>
+
+        {
+          DoesEdit &&
+          <div className="w-full  h-full bg-black  bg-opacity-80 grid justify-items-center absolute left-0 top-[70%]">
+            <PenBoxIcon size={15} />
+          </div>
+        }
       </div>
       <div className="flex gap-4 items-start">
         <div>
@@ -32,11 +36,16 @@ function UserProfileImageCard({ image, name, tags, isEdit, setIsEdit }) {
           </h1>
           <p className="text-xs">{tags}</p>
         </div>
-        {isEdit ? (
-          <X size={20} onClick={() => setIsEdit((prev) => !prev)} />
-        ) : (
-          <Edit size={20} onClick={() => setIsEdit((prev) => !prev)} />
-        )}
+
+        {
+          DoesEdit && (
+            isEdit ? (
+              <X size={20} onClick={() => setIsEdit((prev) => !prev)} />
+            ) : (
+              <Edit size={20} onClick={() => setIsEdit((prev) => !prev)} />
+            )
+          )
+        }
       </div>
     </div>
   );

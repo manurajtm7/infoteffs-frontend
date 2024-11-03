@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { LoadingAnimation, PostCard } from "../../components";
+import { PostCard, SkeletonLoad } from "../../components";
+import { Link } from "react-router-dom";
+
+
 
 function Feeds() {
 
@@ -9,7 +12,7 @@ function Feeds() {
   const [loading, setLoading] = useState(false);
 
   // import.meta.env.VITE_REACT_APP_LOCAL_HOST || 
-  
+
   const productionUrl = import.meta.env.VITE_REACT_APP_LOCAL_HOST || "http://localhost:4000";
 
   useEffect(() => {
@@ -46,14 +49,22 @@ function Feeds() {
 
         <div className="h-[80vh]  overflow-auto">
           {loading ? (
-            <div className="w-full h-screen grid gap-8 place-items-center ">
-              {Array.from({ length: 20 }).map(() => (
-                <LoadingAnimation />
-              ))}
+            <div className="w-full h-screen  flex flex-col items-start ">
+              {/* {Array.from({ length: 20 }).map(() => ( */}
+              <SkeletonLoad />
+              {/* ))} */}
             </div>
-          ) : (
-            posts.map((data, index) => <PostCard key={index} {...data} />)
-          )}
+          ) :
+            posts.length > 0 ?
+
+              (
+                posts.map((data, index) => <PostCard key={index} {...data} />)
+              ) : (
+                <div className="w-full h-1/2  text-center flex gap-1 flex-col items-center justify-center">
+                  <h1>No feeds there</h1>
+                  <Link to={"/user/profile"} className="text-blue-500 text-xs">please add some tags</Link>
+                </div>
+              )}
         </div>
       </div>
     </div>

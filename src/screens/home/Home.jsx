@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { LoadingAnimation, PostCard, UploadPost } from "../../components";
+import { LoadingAnimation, PostCard, SkeletonLoad, UploadPost } from "../../components";
 import { post_data } from "../../constants";
 
 function Home() {
@@ -35,10 +35,12 @@ function Home() {
       <UploadPost />
       <div className="w-full md:w-1/3 h-full pb-24 flex flex-col items-center  overflow-auto">
         {loading ? (
-          <div className="w-full h-screen grid gap-8 place-items-center ">
-            {Array.from({ length: 20 }).map((_, __) => (
+          <div className="w-full h-screen flex flex-col items-center ">
+            {/* {Array.from({ length: 20 }).map((_, __) => (
               <LoadingAnimation />
-            ))}
+            ))} */}
+
+            <SkeletonLoad />
           </div>
         ) : (
           posts.map((data, index) => <PostCard key={index} {...data} />)

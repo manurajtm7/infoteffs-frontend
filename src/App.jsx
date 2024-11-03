@@ -6,6 +6,8 @@ import {
   Feeds,
   Home,
   Login,
+  PeopleProfile,
+  PeoplesScreen,
   ProfileScreen,
   Register,
   SettingScreen,
@@ -30,6 +32,8 @@ function App() {
         <Route path="/user/settings" element={<SettingScreen />} />
         <Route path="/post/upload" element={<UploadPostScreen />} />
         <Route path="/user/feeds" element={<Feeds />} />
+        <Route path="/peoples" element={<PeoplesScreen />} />
+        <Route path="/user/profile/:id" element={<PeopleProfile />} />
       </Routes>
       <ToastContainer />
     </main>

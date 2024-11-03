@@ -70,6 +70,7 @@ function ProfileScreen() {
               user={userDetails?.userDetail}
               isProfileView={true}
               setChanges={setChanges}
+              doesEdit={true}
             />
           ))
         ) : (

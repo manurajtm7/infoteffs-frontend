@@ -10,6 +10,8 @@ import EditProfile from "./edit-profile/EditProfile";
 import ProfileImageUpdate from "./profile-update/ProfileImageUpdate";
 import SkeletonLoad from "./loaders/loading-animation-skeleton/SkeletonLoad";
 import PeoplesCard from "./peoples-card/PeoplesCard";
+import CommentBox from "./comment-section-box/CommentBox";
+import CommentCard from "./comment-card/CommentCard";
 
 export {
   NavBar,
@@ -24,4 +26,6 @@ export {
   ProfileImageUpdate,
   SkeletonLoad,
   PeoplesCard,
+  CommentBox,
+  CommentCard,
 };

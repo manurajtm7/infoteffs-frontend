@@ -1,6 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ProfileImage } from "../../constants";
 import { Heart, MessageCircle, Share2, Trash2 } from "lucide-react";
+import CommentBox from "../comment-section-box/CommentBox";
+import { useNavigate } from "react-router-dom";
+
+
+const productionUrl = import.meta.env.VITE_REACT_APP_LOCAL_HOST;
 
 function PostCard({
   _id,
@@ -18,7 +23,11 @@ function PostCard({
 }) {
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(likes?.length);
-  const productionUrl = import.meta.env.VITE_REACT_APP_LOCAL_HOST;
+  const [hidden, setHidden] = useState(false);
+  const commentRef = useRef(null);
+  const navigate = useNavigate();
+
+
 
   const handleDeletePost = async () => {
     const authKey = localStorage.getItem("authKey");
@@ -67,12 +76,20 @@ function PostCard({
       : setLiked(false);
   }, []);
 
+  useEffect(() => {
+    commentRef?.current?.scrollIntoView();
+  }, [hidden])
+
   return (
     <div
       className="w-full h-max text-tcolor mt-3"
       onDoubleClick={handleLikeState}
     >
-      <div className="w-full text-sm border-b border-zinc-700 py-3 px-5 flex gap-3 items-center relative ">
+      <div className="w-full text-sm border-b border-zinc-700 py-3 px-5 flex gap-3 items-center relative cursor-pointer active:scale-105 transition-all "
+        onClick={() => {
+          setTimeout(() => {navigate(`/user/profile/:${user?._id}`)} , 150)
+        }}
+      >
         <img
           src={user?.image || ProfileImage}
           alt="user image"
@@ -106,13 +123,18 @@ function PostCard({
           />
           <p className="text-white">{likeCount}</p>
         </div>
-        <MessageCircle />
+        <MessageCircle onClick={() => setHidden(!hidden)} />
         <Share2 />
       </div>
       <div className="py-1 px-5">
         <h3 className="text-xs font-medium">{postName}</h3>
         <p className="text-xs opacity-60 ">{content?.toString()}</p>
       </div>
+      {
+        hidden && (
+          <CommentBox ref={commentRef} />
+        )
+      }
     </div>
   );
 }

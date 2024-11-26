@@ -54,6 +54,7 @@ function ProfileScreen() {
             {...userDetails?.userDetail}
             setIsEdit={setIsEdit}
             isEdit={isEdit}
+            DoesEdit={true}
           />
         )}
       </div>

@@ -29,6 +29,7 @@ function PostCard({
 
 
 
+
   const handleDeletePost = async () => {
     const authKey = localStorage.getItem("authKey");
     const userId = localStorage.getItem("userId");
@@ -87,7 +88,7 @@ function PostCard({
     >
       <div className="w-full text-sm border-b border-zinc-700 py-3 px-5 flex gap-3 items-center relative cursor-pointer active:scale-105 transition-all "
         onClick={() => {
-          setTimeout(() => {navigate(`/user/profile/:${user?._id}`)} , 150)
+          setTimeout(() => { navigate(`/user/profile/:${user?._id}`) }, 150)
         }}
       >
         <img
@@ -132,7 +133,7 @@ function PostCard({
       </div>
       {
         hidden && (
-          <CommentBox ref={commentRef} />
+          <CommentBox hidden={hidden} postId={_id} ref={commentRef} />
         )
       }
     </div>

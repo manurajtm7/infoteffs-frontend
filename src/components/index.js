@@ -12,6 +12,7 @@ import SkeletonLoad from "./loaders/loading-animation-skeleton/SkeletonLoad";
 import PeoplesCard from "./peoples-card/PeoplesCard";
 import CommentBox from "./comment-section-box/CommentBox";
 import CommentCard from "./comment-card/CommentCard";
+import Notification from "./notification-card/Notification";
 
 export {
   NavBar,
@@ -28,4 +29,5 @@ export {
   PeoplesCard,
   CommentBox,
   CommentCard,
+  Notification,
 };

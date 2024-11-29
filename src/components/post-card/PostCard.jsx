@@ -22,6 +22,7 @@ function PostCard({
   doesEdit
 }) {
   const [liked, setLiked] = useState(false);
+  const [likedAnim, setLikedAnim] = useState(false);
   const [likeCount, setLikeCount] = useState(likes?.length);
   const [hidden, setHidden] = useState(false);
   const commentRef = useRef(null);
@@ -51,8 +52,16 @@ function PostCard({
     }
   };
 
-  const handleLikeState = async (e) => {
+  const handleLikeState = async () => {
     setLiked((prev) => !prev);
+
+    if (!liked) {
+      setLikedAnim(true);
+      setTimeout(() => {
+        setLikedAnim(false)
+      }, 1000)
+    }
+
     try {
       await fetch(`${productionUrl}/like`, {
         method: "POST",
@@ -68,6 +77,7 @@ function PostCard({
     } catch (err) {
       alert(err);
     }
+
     setLikeCount(prev => liked ? prev - 1 : prev + 1)
   };
 
@@ -96,6 +106,7 @@ function PostCard({
           alt="user image"
           className="w-9 h-9  border border-zinc-800 rounded-full object-cover"
         />
+
         <p>{user?.name}</p>
         <p className="text-xs opacity-45 truncate">
           {new Date(date).toDateString()}
@@ -110,8 +121,15 @@ function PostCard({
       </div>
 
       {image && (
-        <div className="w-full h-max mt-5">
+        <div className="w-full h-max mt-5 relative">
           <img src={image} alt="post image" />
+          {
+            likedAnim && (
+              <div className=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  transition-opacity ">
+                <Heart className="shadow-xs animate-pop-in" size={120} fill="white" />
+              </div>
+            )
+          }
         </div>
       )}
 

@@ -7,6 +7,7 @@ import Feeds from "./feeds/Feeds";
 import SettingScreen from "./settings/SettingScreen";
 import PeoplesScreen from "./peoples/PeoplesScreen";
 import PeopleProfile from "./peoples/PeopleProfile";
+import SearchBar from "../components/search-bar/SearchBar";
 
 export {
   Home,
@@ -17,5 +18,6 @@ export {
   SettingScreen,
   Feeds,
   PeoplesScreen,
-  PeopleProfile
+  PeopleProfile,
+  SearchBar,
 };

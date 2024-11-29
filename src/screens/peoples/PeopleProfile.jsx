@@ -52,7 +52,7 @@ function PeopleProfile() {
                     />
                 )}
             </div>
-            <div className="w-[90%] md:w-1/3 h-[75%] md:h-[70%] pb-20  overflow-auto">
+            <div className="w-full md:w-1/3 h-[75%] md:h-[70%] pb-20  overflow-auto">
                 {loading ? (
                     <div className="w-full h-full   flex items-center justify-center ">
                         <LoadingAnimationTwo />

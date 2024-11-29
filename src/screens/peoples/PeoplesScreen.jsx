@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { LoadingAnimationThree, LoadingAnimationTwo, PeoplesCard } from '../../components';
+import SearchBar from '../../components/search-bar/SearchBar';
 
 function PeoplesScreen() {
 
     const [peoples, setPeoples] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [input, setInput] = useState("");
 
 
 
@@ -35,6 +37,8 @@ function PeoplesScreen() {
         handleFetchProfieDetails();
     }, []);
 
+
+
     return (
         <div className='w-full h-full text-white gradient-2 grid place-items-center overflow-auto'>
             <div className='w-full md:w-1/3 h-full overflow-hidden'>
@@ -42,19 +46,23 @@ function PeoplesScreen() {
                 <div className='w-full text-start'>
                     <h1 className='font-semibold text-sm mt-5 px-5'>Find peoples</h1>
                 </div>
-
-                <div className='w-full h-4/5  mt-5 p-5 flex flex-col gap-5 overflow-auto'>
+                <div className='mt-5 grid place-items-center '>
+                    <div className='w-[90%]'>
+                        <SearchBar inputState={input} setInputState={setInput} />
+                    </div>
+                </div>
+                <div className='w-full h-4/5 mt-3  p-5 flex flex-col gap-5 overflow-auto'>
                     {
-                        loading ? 
-                         (
-                            <div className='w-full h-full grid place-items-center'>
-                               <LoadingAnimationTwo />
-                            </div>
-                         )
-                        :
-                        peoples.map((data, index) => (
-                            <PeoplesCard key={index} data={data} />
-                        ))
+                        loading ?
+                            (
+                                <div className='w-full h-full grid place-items-center'>
+                                    <LoadingAnimationTwo />
+                                </div>
+                            )
+                            :
+                            peoples.filter(item => (input != "" ? item.name?.toLowerCase().includes(input.toLowerCase()) : peoples)).map((data, index) => (
+                                <PeoplesCard key={index} data={data} />
+                            ))
                     }
                 </div>
 

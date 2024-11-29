@@ -15,16 +15,16 @@ function UserProfileImageCard({ image, name, tags, isEdit, setIsEdit, DoesEdit }
       }
       <div
         onClick={() => setIsProfileUpdateAtive(prev => !prev)}
-        className="min-w-max border-2 border-emerald-600  rounded-full overflow-hidden relative ">
+        className="min-w-max border-2 border-zinc-900 p-2   rounded-full overflow-hidden relative ">
         <img
           src={image || ProfileImage}
           alt="user profile"
-          className="w-20 h-20   object-cover"
+          className="w-20 h-20 rounded-full   object-cover"
         />
 
         {
           DoesEdit &&
-          <div className="w-full  h-full bg-black  bg-opacity-80 grid justify-items-center absolute left-0 top-[70%]">
+          <div className="w-full  h-full bg-black  bg-opacity-80 p-2 grid justify-items-center absolute left-0 top-[70%]">
             <PenBoxIcon size={15} />
           </div>
         }

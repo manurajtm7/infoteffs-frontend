@@ -2,6 +2,7 @@ import { Check, ImageUp, X } from 'lucide-react'
 import React, { useState } from 'react'
 import { LoadingAnimationThree, LoadingAnimationTwo } from '../index'
 import { toast } from 'react-toastify'
+import { ProfileImage } from '../../constants'
 
 
 const productionUrl = import.meta.env.VITE_REACT_APP_LOCAL_HOST
@@ -43,7 +44,7 @@ function ProfileImageUpdate({ image, isActive, setIsAtive }) {
                 <div className='w-full grid place-items-end relative z-[100]'>
                     <X onClick={() => setIsAtive(false)} />
                 </div>
-                <img src={preview || image} alt="user current profile image" className='w-28 h-28 rounded-full object-cover object-center' />
+                <img src={preview || image || ProfileImage} alt="user current profile image" className='w-28 h-28 rounded-full object-cover object-center' />
                 <p>Update your profile picture</p>
                 <div className='w-1/2 flex  items-center justify-center'>
                     <div

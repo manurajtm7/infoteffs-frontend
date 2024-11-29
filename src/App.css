@@ -28,6 +28,11 @@
   overflow: hidden;
 }
 
+.animate-pop-in {
+  animation: pop-in 0.1s ease-in-out;
+  transition: 0.2s ease-in;
+}
+
 @keyframes pushin {
   0% {
     left: 0;
@@ -44,19 +49,27 @@
     background-color: rgb(33, 33, 33);
   }
 }
+@keyframes pop-in {
+  0% {
+    transform: scale(0);
+  }
 
-::-webkit-scrollbar{
-    width: 0.3vw;
+  100% {
+    transform: scale(1);
+  }
+}
+::-webkit-scrollbar {
+  width: 0.3vw;
 }
 
-::-webkit-scrollbar-track{
-    background-color: black;
+::-webkit-scrollbar-track {
+  background-color: black;
 }
 
-::-webkit-scrollbar-thumb{
-    background-color: rgb(43, 43, 43);
+::-webkit-scrollbar-thumb {
+  background-color: rgb(43, 43, 43);
 }
 
-.active{
-  @apply text-sky-700  scale-125 -translate-y-1 
+.active {
+  @apply text-sky-700  scale-125 -translate-y-1;
 }

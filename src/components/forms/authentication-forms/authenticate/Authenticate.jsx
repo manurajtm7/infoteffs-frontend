@@ -1,11 +1,13 @@
 import { Image } from "lucide-react";
 import React, { useState } from "react";
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LoadingAnimationThree from "../../../loaders/loading-animation-three/LoadingAnimationThree";
 import { toast } from "react-toastify";
-
+const productionUrl = import.meta.env.VITE_REACT_APP_LOCAL_HOST;
 function Authenticate({ isLogin }) {
+
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,10 +26,9 @@ function Authenticate({ isLogin }) {
       formData.set("name", name);
       formData.set("email", email);
       formData.set("password", password);
-      formData.set("file", file);
+      file && formData.set("file", file);
       let responce2 = await fetch(
-        `${import.meta.env.VITE_REACT_APP_LOCAL_HOST}/${
-          isLogin ? "Login" : "Register"
+        `${productionUrl}/${isLogin ? "Login" : "Register"
         }`,
         {
           method: "POST",
@@ -54,7 +55,7 @@ function Authenticate({ isLogin }) {
         );
         setLoading(false);
       }
-    } else alert("please enter the valid details");
+    } else toast.error("Please add valid details");
   }
 
   return (
@@ -120,6 +121,7 @@ function Authenticate({ isLogin }) {
         {loading ? <LoadingAnimationThree /> : isLogin ? "Login" : "Register"}
       </button>
       <span className="error-text">{change}</span>
+      <span className="text-sm text-zinc-500">{isLogin ? <Link to={"/auth/register"}>Not have an account?  <span className="text-blue-300">register</span></Link> : <Link to={"/auth/login"}>Already have an account? <span className="text-blue-300">login</span></Link>}</span>
     </form>
   );
 }

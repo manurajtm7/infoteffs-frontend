@@ -39,7 +39,7 @@ function ProfileImageUpdate({ image, isActive, setIsAtive }) {
 
     return (
         <div className={`w-full ${!isActive ? "left-full transition-colors" : " left-0 transition-transform"}   h-[40vh]  flex items-center justify-center absolute top-0  z-[200] transition-transform`}>
-            <div className='w-[90%] md:w-1/3 h-full meta-gradient p-5 flex flex-col gap-5 items-center relative '>
+            <div className='w-full md:w-1/3  h-full  meta-gradient p-5 flex flex-col gap-5 items-center relative  z-[100] '>
 
                 <div className='w-full grid place-items-end relative z-[100]'>
                     <X onClick={() => setIsAtive(false)} />

@@ -54,17 +54,15 @@ function ProfileScreen() {
       />
       <div className="w-[90%] md:w-1/3 h-max ">
         {!loading && (
-          <div className="w-full sticky top-0 ">
-            <UserProfileImageCard
-              {...userDetails?.userDetail}
-              setIsEdit={setIsEdit}
-              isEdit={isEdit}
-              DoesEdit={true}
-            />
-          </div>
+          <UserProfileImageCard
+            {...userDetails?.userDetail}
+            setIsEdit={setIsEdit}
+            isEdit={isEdit}
+            DoesEdit={true}
+          />
         )}
       </div>
-      <div className="w-full md:w-1/3 h-[75%] md:h-[70%] pb-5 last:pb-5  ">
+      <div className="w-full md:w-1/3 h-[75%] md:h-[70%]  pb-5 last:pb-5  ">
         {loading ? (
           <div className="w-full h-full flex items-center justify-center">
             <LoadingAnimationTwo />

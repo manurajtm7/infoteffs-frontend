@@ -3,6 +3,7 @@ import { ProfileImage } from "../../constants";
 import { Heart, MessageCircle, Share2, Trash2 } from "lucide-react";
 import CommentBox from "../comment-section-box/CommentBox";
 import { useNavigate } from "react-router-dom";
+import { Notify } from "../../utilities/notify/NotifyContainer"
 
 
 const productionUrl = import.meta.env.VITE_REACT_APP_LOCAL_HOST;
@@ -25,6 +26,8 @@ function PostCard({
   const [likedAnim, setLikedAnim] = useState(false);
   const [likeCount, setLikeCount] = useState(likes?.length);
   const [hidden, setHidden] = useState(false);
+  const [notifyFunc] = Notify()
+
   const commentRef = useRef(null);
   const navigate = useNavigate();
 
@@ -45,10 +48,10 @@ function PostCard({
       headers: { "Content-Type": "application/json" },
     });
     if (response.ok) {
-      window.alert(`The post is deleted successfully`);
+      notifyFunc("Post deleted successfully", 3000)
       setChanges((prev) => !prev);
     } else {
-      window.alert("error occured , try agin later");
+      notifyFunc("Error while deleting post", 4000)
     }
   };
 
@@ -68,6 +71,7 @@ function PostCard({
         body: JSON.stringify({
           postId: _id,
           likeState: liked,
+          authKey: localStorage.getItem("authKey"),
           userId: localStorage.getItem("userId"),
         }),
         headers: { "Content-Type": "application/json" },
@@ -154,6 +158,7 @@ function PostCard({
           <CommentBox hidden={hidden} postId={_id} ref={commentRef} />
         )
       }
+
     </div>
   );
 }

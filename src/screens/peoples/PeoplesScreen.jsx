@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { LoadingAnimationThree, LoadingAnimationTwo, PeoplesCard } from '../../components';
 import SearchBar from '../../components/search-bar/SearchBar';
+import { Notify } from '../../utilities/notify/NotifyContainer';
 
 function PeoplesScreen() {
 
     const [peoples, setPeoples] = useState([]);
     const [loading, setLoading] = useState(false);
     const [input, setInput] = useState("");
+    const [notifyFunc] = Notify()
+
 
 
 
@@ -28,7 +31,7 @@ function PeoplesScreen() {
                 setPeoples((await response.json()).data);
                 setLoading(false);
             } else {
-                window.alert("error occured , try agin later");
+                notifyFunc("Error . please kindly login to access", 3000)
                 setTimeout(() => {
                     setLoading(false);
                 }, 8000);

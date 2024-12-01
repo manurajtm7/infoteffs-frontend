@@ -8,7 +8,7 @@ function Feeds() {
 
   const [change, setChange] = useState(false);
   const [posts, setPosts] = useState([]);
-  const [err, setErr] = useState(true);
+  const [err, setErr] = useState(false);
   const [loading, setLoading] = useState(false);
 
   // import.meta.env.VITE_REACT_APP_LOCAL_HOST || 
@@ -16,29 +16,31 @@ function Feeds() {
   const productionUrl = import.meta.env.VITE_REACT_APP_LOCAL_HOST || "http://localhost:4000";
 
   useEffect(() => {
-    const hanldeFetchData = () => {
+    const hanldeFetchData = async () => {
       setLoading(true);
-      try {
-        fetch(`${productionUrl}/user/feeds`, {
-          method: "POST",
-          body: JSON.stringify({ userId: localStorage.getItem("userId") }),
-          headers: { "Content-Type": "application/json" },
-        })
-          .then((res) => res.json())
-          .then((d) => {
-            setPosts(d.feeds);
-            setLoading(false);
-            setErr(false);
-          });
-      } catch (e) {
-        setErr(true);
-        console.error(e);
+
+      const response = await fetch(`${productionUrl}/user/feeds`, {
+        method: "POST",
+        body: JSON.stringify({ userId: localStorage.getItem("userId") }),
+        headers: { "Content-Type": "application/json" },
+      })
+
+      if (response.ok) {
+        setPosts((await response.json()).feeds);
+        setLoading(false);
+        setErr(false);
       }
+      else {
+        setErr(true)
+      }
+
     };
 
     hanldeFetchData();
   }, []);
-
+  if (err) return (
+    <h1>Login required</h1>
+  )
   return (
     <div className="w-full h-screen text-tcolor gradient-2   grid items-start justify-items-center">
 

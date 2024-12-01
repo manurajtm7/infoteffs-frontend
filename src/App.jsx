@@ -16,11 +16,16 @@ import {
 import { NavBar } from "./components";
 import { ToastContainer } from "react-toastify";
 import TopBar from "./components/top-bar/TopBar";
+import { NotifyContainer } from "./utilities/notify/NotifyContainer";
+import { useRef } from "react";
 
 function App() {
+
+
+
   return (
     <main className="w-full h-screen gradient font-poppins">
-      <div className="w-full h-max">
+      <div className="w-full h-max" >
         <NavBar />
         <TopBar />
       </div>
@@ -36,6 +41,7 @@ function App() {
         <Route path="/user/profile/:id" element={<PeopleProfile />} />
       </Routes>
       <ToastContainer />
+      <NotifyContainer />
     </main>
   );
 }

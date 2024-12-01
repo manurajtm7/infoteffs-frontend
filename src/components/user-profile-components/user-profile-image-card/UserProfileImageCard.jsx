@@ -32,7 +32,7 @@ function UserProfileImageCard({ image, name, tags, isEdit, setIsEdit, DoesEdit }
       <div className="flex gap-4 items-start">
         <div>
           <h1 className="text-lg font-medium capitalize ">
-            {name || "test pass"}
+            {name || "unknown"}
           </h1>
           <p className="text-xs">{tags}</p>
         </div>

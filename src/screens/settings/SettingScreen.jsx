@@ -8,6 +8,7 @@ function SettingScreen() {
 
   const handleLogout = () => {
     localStorage.removeItem("authKey");
+    localStorage.removeItem("userId");
     window.location.reload();
   };
   return (

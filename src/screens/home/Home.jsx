@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { LoadingAnimation, PostCard, SkeletonLoad, UploadPost } from "../../components";
-import { post_data } from "../../constants";
+import { PostCard, SkeletonLoad, UploadPost } from "../../components";
+
 
 function Home() {
   const [change, setChange] = useState(false);
@@ -8,7 +8,9 @@ function Home() {
   const [err, setErr] = useState(true);
   const [loading, setLoading] = useState(false);
 
+
   const productionUrl = import.meta.env.VITE_REACT_APP_LOCAL_HOST;
+
 
   useEffect(() => {
     const hanldeFetchData = () => {
@@ -32,14 +34,10 @@ function Home() {
 
   return (
     <div className="w-full h-full gradient-2 grid  place-items-center ">
-      <UploadPost />
+      <UploadPost/>
       <div className="w-full md:w-1/3 h-full pb-24 flex flex-col items-center  overflow-auto">
         {loading ? (
           <div className="w-full h-screen flex flex-col items-center ">
-            {/* {Array.from({ length: 20 }).map((_, __) => (
-              <LoadingAnimation />
-            ))} */}
-
             <SkeletonLoad />
           </div>
         ) : (

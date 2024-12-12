@@ -36,7 +36,7 @@ function EditProfile({ active, name, tags, setChanges, setActive }) {
   return (
     <div
       className="w-full md:w-1/3  text-tcolor gradient-2  flex gap-3 flex-col items-center justify-center transition-all overflow-auto"
-      style={{ height: active ? "300px" : "0px" }}
+      style={{ height: active ? "250px" : "0px" }}
     >
       <form
         onSubmit={handleUpdateUserDetail}

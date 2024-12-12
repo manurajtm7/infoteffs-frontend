@@ -50,11 +50,11 @@ function PeoplesScreen() {
                     <h1 className='font-semibold text-sm mt-5 px-5'>Find peoples</h1>
                 </div>
                 <div className='mt-5 grid place-items-center '>
-                    <div className='w-[90%]'>
+                    <div className='w-[95%]'>
                         <SearchBar inputState={input} setInputState={setInput} />
                     </div>
                 </div>
-                <div className='w-full h-4/5 mt-3  p-5 flex flex-col gap-5 overflow-auto'>
+                <div className='w-full h-4/5 mt-3  p-2 flex flex-col gap-5 overflow-auto  last:pb-10'>
                     {
                         loading ?
                             (

@@ -7,7 +7,6 @@ import {
 } from "../../components";
 import { Link } from "react-router-dom";
 import { Image } from "lucide-react";
-import { toast } from "react-toastify";
 import { Notify } from "../../utilities/notify/NotifyContainer";
 
 function ProfileScreen() {
@@ -15,7 +14,7 @@ function ProfileScreen() {
   const [loading, setLoading] = useState(false);
   const [changes, setChanges] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
-  const [notifyFunc] = Notify()
+  const [ notifyFunc ] = Notify()
 
 
   const productionUrl = `${import.meta.env.VITE_REACT_APP_LOCAL_HOST}`;
@@ -45,7 +44,7 @@ function ProfileScreen() {
   }, [changes]);
 
   return (
-    <div className="w-full h-[82%] xs:h-[90%] gradient-2  flex md:gap-5 flex-col  items-center relative overflow-auto ">
+    <div className="w-full min-h-screen h-max gradient-2  flex md:gap-5 flex-col  items-center relative overflow-auto ">
       <EditProfile
         {...userDetails.userDetail}
         active={isEdit}
@@ -64,7 +63,7 @@ function ProfileScreen() {
       </div>
       <div className="w-full md:w-1/3 h-[75%] md:h-[70%]  pb-5 last:pb-5  ">
         {loading ? (
-          <div className="w-full h-full flex items-center justify-center">
+          <div className="w-full h-[80vh]  flex items-center justify-center">
             <LoadingAnimationTwo />
           </div>
         ) : userDetails?.posts?.length > 0 ? (

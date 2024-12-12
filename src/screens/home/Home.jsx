@@ -1,47 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { PostCard, SkeletonLoad, UploadPost } from "../../components";
+import { useQuery } from "@tanstack/react-query";
+import { hanldeFetchData } from "../../controllers/FetchHandler"
 
 
 function Home() {
-  const [change, setChange] = useState(false);
-  const [posts, setPosts] = useState([]);
-  const [err, setErr] = useState(true);
-  const [loading, setLoading] = useState(false);
+
+  const { data, error, isLoading } = useQuery({
+    queryKey: ["post_data"],
+    queryFn: hanldeFetchData
+  })
 
 
-  const productionUrl = import.meta.env.VITE_REACT_APP_LOCAL_HOST;
+  if (error) return <h1>Error retry!</h1>
 
-
-  useEffect(() => {
-    const hanldeFetchData = () => {
-      setLoading(true);
-      try {
-        fetch(`${productionUrl}/`)
-          .then((res) => res.json())
-          .then((d) => {
-            setPosts(d);
-            setLoading(false);
-            setErr(false);
-          });
-      } catch (e) {
-        setErr(true);
-        console.error(e);
-      }
-    };
-
-    hanldeFetchData();
-  }, [change]);
 
   return (
     <div className="w-full h-full gradient-2 grid  place-items-center ">
-      <UploadPost/>
+      <UploadPost />
       <div className="w-full md:w-1/3 h-full pb-24 flex flex-col items-center  overflow-auto">
-        {loading ? (
+        {isLoading ? (
           <div className="w-full h-screen flex flex-col items-center ">
             <SkeletonLoad />
           </div>
         ) : (
-          posts.map((data, index) => <PostCard key={index} {...data} />)
+          data?.map((data, index) => <PostCard key={index} {...data} />)
         )}
       </div>
     </div>

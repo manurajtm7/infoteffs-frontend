@@ -1,0 +1,53 @@
+._ {
+  --cs-primary: #1d4ed8; /* Primary color (e.g., buttons, accent) */
+  --cs-secondary: #000000; /* Background color */
+  --cs-on-primary: #ffffff; /* Text on primary */
+  --cs-on-secondary: #111827; /* Text on background */
+}
+
+.test {
+  background-color: red;
+}
+
+.cs-message-input__content-editor {
+  background-color: #f3f4f600 !important; /* light gray */
+  color: #111827 !important; /* almost black text */
+}
+
+.cs-message-input {
+  background-color: #e0e7ff00 !important; /* background of input area */
+  border-top: none !important;
+}
+
+.cs-message.cs-message--outgoing .cs-message__content {
+  background-color: #4f46e5; /* Indigo-600 */
+  color: white;
+}
+
+.cs-message.cs-message--incoming .cs-message__content {
+  background-color: #f3f4f6; /* Gray-100 */
+  color: black;
+}
+
+/* Outer container of the input */
+.cs-message-input {
+  background-color: transparent !important; /* light background */
+  border-top: none !important;
+}
+
+.cs-message-input__content-editor-wrapper {
+  background-color: transparent;
+}
+
+/* The actual editable div where you type */
+.cs-message-input__content-editor {
+  color: white !important; /* text color */
+  border-radius: 12px !important;
+  /* border: 1px solid #d1d5db !important; */
+}
+
+.cs-message-input__content-editor-container {
+  background-color: rgb(35, 35, 35);
+  border-radius: 12px !important;
+  padding: 9px 14px !important;
+}

@@ -1,4 +1,4 @@
-import { Settings, Squirrel, UserCircleIcon } from "lucide-react";
+import { MessageCircleMore, Settings, Squirrel, UserCircleIcon } from "lucide-react";
 import React from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
@@ -13,7 +13,15 @@ function TopBar() {
         >
           <Squirrel /> Infoteffs
         </Link>
-        <Settings size={20} onClick={() => navigate("/user/settings")} />
+        <div className="flex gap-5 md:px-5">
+          <Link
+            to={"/chat-select"}
+            className="font-medium flex gap-2 items-center justify-center"
+          >
+            <MessageCircleMore />
+          </Link>
+          <Settings size={20} onClick={() => navigate("/user/settings")} />
+        </div>
       </div>
     </div>
   );

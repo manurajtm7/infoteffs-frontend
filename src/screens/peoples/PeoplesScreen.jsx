@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { LoadingAnimationThree, LoadingAnimationTwo, PeoplesCard } from '../../components';
+
 import SearchBar from '../../components/search-bar/SearchBar';
 import { Notify } from '../../utilities/notify/NotifyContainer';
+import { LoadingAnimationTwo, PeoplesCard } from '../../components';
+import { productionUrl } from "../../controllers/FetchHandler"
 
 function PeoplesScreen() {
 
@@ -10,10 +12,6 @@ function PeoplesScreen() {
     const [input, setInput] = useState("");
     const [notifyFunc] = Notify()
 
-
-
-
-    const productionUrl = `${import.meta.env.VITE_REACT_APP_LOCAL_HOST}`;
 
 
     useEffect(() => {

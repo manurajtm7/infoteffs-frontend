@@ -16,11 +16,13 @@ function Home() {
 
 
   useEffect(() => {
-    const previousScollValue = sessionStorage.getItem("INTFS_SCROLL_VALUE")
+    const previousScollValue = parseInt(sessionStorage.getItem("INTFS_SCROLL_VALUE"))
+    console.log(previousScollValue);
+
     scrollRef.current.scrollTo({
       top: previousScollValue,
     })
-  }, [])
+  }, [data, isLoading])
 
 
   function throttle(fn, limit) {

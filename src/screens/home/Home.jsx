@@ -3,6 +3,13 @@ import { useQuery } from "@tanstack/react-query";
 import { hanldeFetchData } from "../../controllers/FetchHandler"
 import { useEffect, useRef } from "react";
 
+function debounce(fn, delay) {
+  let timeout;
+  return function (...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => fn.apply(this, args), delay);
+  };
+}
 
 
 function Home() {
@@ -13,44 +20,31 @@ function Home() {
     queryFn: hanldeFetchData
   })
 
-
-
   useEffect(() => {
-    const previousScollValue = parseInt(sessionStorage.getItem("INTFS_SCROLL_VALUE"))
-    console.log(previousScollValue);
+    if (!isLoading && data.length) {
 
-    scrollRef.current.scrollTo({
-      top: previousScollValue,
-    })
+      const previousScollValue = Number(sessionStorage.getItem("INTFS_SCROLL_VALUE")) || 0
+      setTimeout(() => {
+        scrollRef.current.scrollTo({
+          top: previousScollValue,
+          behavior: 'auto'
+        })
+      }, 50)
+    }
   }, [data, isLoading])
 
 
-  function throttle(fn, limit) {
-    let lastCall = 0;
-    return function (...args) {
-      const now = Date.now();
-      if (now - lastCall >= limit) {
-        lastCall = now;
-        fn.apply(this, args);
-      }
-    };
-  }
-
-
-
   useEffect(() => {
-    let scrollThrottleFunction = throttle(() => {
+    let debousedFunction = debounce(() => {
       sessionStorage.setItem("INTFS_SCROLL_VALUE", scrollRef.current.scrollTop)
-    }, 150)
+    }, 100)
 
     const element = scrollRef.current;
-    element.addEventListener("scroll", scrollThrottleFunction)
+    element.addEventListener("scroll", debousedFunction)
     return () => {
-      element.removeEventListener("scroll", scrollThrottleFunction)
+      element.removeEventListener("scroll", debousedFunction)
     }
   })
-
-
 
   if (error) return <h1>Error retry!</h1>
 

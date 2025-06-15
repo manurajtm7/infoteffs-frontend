@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   EditProfile,
   LoadingAnimationTwo,
@@ -8,13 +8,16 @@ import {
 import { Link } from "react-router-dom";
 import { Image } from "lucide-react";
 import { Notify } from "../../utilities/notify/NotifyContainer";
+import useScroll from "../../hooks/useScroll";
 
 function ProfileScreen() {
   const [userDetails, setUserDetails] = useState({});
   const [loading, setLoading] = useState(false);
   const [changes, setChanges] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
-  const [ notifyFunc ] = Notify()
+  const [notifyFunc] = Notify()
+  const [scrollRef] = useScroll(userDetails, loading, 'INFO_PROFILE_SCROLL')
+
 
 
   const productionUrl = `${import.meta.env.VITE_REACT_APP_LOCAL_HOST}`;
@@ -61,7 +64,7 @@ function ProfileScreen() {
           />
         )}
       </div>
-      <div className="w-full md:w-1/3 h-[75%] md:h-[70%]  pb-5 last:pb-5  ">
+      <div ref={scrollRef} className="w-full md:w-1/3 h-[75%] md:h-[70%]  pb-5 last:pb-5  ">
         {loading ? (
           <div className="w-full h-[80vh]  flex items-center justify-center">
             <LoadingAnimationTwo />

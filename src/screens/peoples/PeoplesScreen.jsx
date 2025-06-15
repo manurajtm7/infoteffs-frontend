@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { LoadingAnimationThree, LoadingAnimationTwo, PeoplesCard } from '../../components';
 import SearchBar from '../../components/search-bar/SearchBar';
 import { Notify } from '../../utilities/notify/NotifyContainer';
+import useScroll from '../../hooks/useScroll';
 
 function PeoplesScreen() {
 
@@ -10,6 +11,7 @@ function PeoplesScreen() {
     const [input, setInput] = useState("");
     const [notifyFunc] = Notify()
 
+    const [scrollRef] = useScroll(peoples, loading, 'INFO_PEOPLE_SCROLL')
 
 
 
@@ -54,7 +56,7 @@ function PeoplesScreen() {
                         <SearchBar inputState={input} setInputState={setInput} />
                     </div>
                 </div>
-                <div className='w-full h-4/5 mt-3  p-2 flex flex-col gap-5 overflow-auto  last:pb-10'>
+                <div ref={scrollRef} className='w-full h-4/5 mt-3  p-2 flex flex-col gap-5 overflow-auto  last:pb-10'>
                     {
                         loading ?
                             (

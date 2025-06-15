@@ -1,50 +1,16 @@
 import { PostCard, SkeletonLoad, UploadPost } from "../../components";
 import { useQuery } from "@tanstack/react-query";
 import { hanldeFetchData } from "../../controllers/FetchHandler"
-import { useEffect, useRef } from "react";
-
-function debounce(fn, delay) {
-  let timeout;
-  return function (...args) {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => fn.apply(this, args), delay);
-  };
-}
-
+import useScroll from "../../hooks/useScroll";
 
 function Home() {
 
-  const scrollRef = useRef(null)
   const { data, error, isLoading } = useQuery({
     queryKey: ["post_data"],
     queryFn: hanldeFetchData
   })
+  const [scrollRef] = useScroll(data, isLoading , 'INFO_HOME_SCROLL')
 
-  useEffect(() => {
-    if (!isLoading && data.length) {
-
-      const previousScollValue = Number(sessionStorage.getItem("INTFS_SCROLL_VALUE")) || 0
-      setTimeout(() => {
-        scrollRef.current.scrollTo({
-          top: previousScollValue,
-          behavior: 'auto'
-        })
-      }, 50)
-    }
-  }, [data, isLoading])
-
-
-  useEffect(() => {
-    let debousedFunction = debounce(() => {
-      sessionStorage.setItem("INTFS_SCROLL_VALUE", scrollRef.current.scrollTop)
-    }, 100)
-
-    const element = scrollRef.current;
-    element.addEventListener("scroll", debousedFunction)
-    return () => {
-      element.removeEventListener("scroll", debousedFunction)
-    }
-  })
 
   if (error) return <h1>Error retry!</h1>
 

@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { PostCard, SkeletonLoad } from "../../components";
 import { Link } from "react-router-dom";
+import useScroll from "../../hooks/useScroll";
 
 
 
@@ -10,6 +11,7 @@ function Feeds() {
   const [posts, setPosts] = useState([]);
   const [err, setErr] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [scrollRef] = useScroll(posts, loading)
 
   // import.meta.env.VITE_REACT_APP_LOCAL_HOST || 
 
@@ -49,7 +51,7 @@ function Feeds() {
           <h1 className=" text-lg font-semibold feeds-gradient  text-transparent bg-clip-text "> Feeds </h1>
         </div>
 
-        <div className="h-[80vh]  overflow-auto">
+        <div className="h-[80vh]  overflow-auto" ref={scrollRef}>
           {loading ? (
             <div className="w-full h-screen  flex flex-col items-start ">
               {/* {Array.from({ length: 20 }).map(() => ( */}
